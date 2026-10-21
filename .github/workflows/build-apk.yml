@@ -23,12 +23,12 @@ jobs:
           flutter-version: '3.19.0'
           channel: 'stable'
 
-      - name: Organize Project Structure
+      - name: Setup Android platform
         run: |
           mkdir -p lib
-          if [ -f "Main.dart" ]; then mv Main.dart lib/main.dart; fi
-          if [ -f "main.dart" ]; then mv main.dart lib/main.dart; fi
-          flutter create . --platforms=android --org com.example
+          if [ -f "Main.dart" ]; then cp Main.dart lib/main.dart; fi
+          if [ -f "main.dart" ]; then cp main.dart lib/main.dart; fi
+          flutter create . --platforms=android --org com.example --overwrite
 
       - name: Install dependencies
         run: flutter pub get
