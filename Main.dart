@@ -560,6 +560,8 @@ class _SwipeScreenState extends State<SwipeScreen> {
 
   int _photoIndex = 0;
 
+  
+
   final List<Map<String, dynamic>> _profiles = [
 
     {
@@ -567,6 +569,8 @@ class _SwipeScreenState extends State<SwipeScreen> {
       'name': 'พลอย', 
 
       'age': 23, 
+
+      'distance': '3.5 กม.',
 
       'photos': [
 
@@ -585,6 +589,8 @@ class _SwipeScreenState extends State<SwipeScreen> {
       'name': 'มิน', 
 
       'age': 25, 
+
+      'distance': '820 เมตร',
 
       'photos': [
 
@@ -928,7 +934,35 @@ class _SwipeScreenState extends State<SwipeScreen> {
 
                           children: [
 
-                            Text('${profile['name']}, ${profile['age']}', style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white)),
+                            Text(
+
+                              '${profile['name']}, ${profile['age']}', 
+
+                              style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+
+                            ),
+
+                            const SizedBox(height: 2),
+
+                            Row(
+
+                              children: [
+
+                                const Icon(Icons.location_on, color: Colors.pinkAccent, size: 16),
+
+                                const SizedBox(width: 4),
+
+                                Text(
+
+                                  'ห่างจากคุณ ${profile['distance']}', 
+
+                                  style: const TextStyle(fontSize: 14, color: Colors.white70, fontWeight: FontWeight.w500),
+
+                                ),
+
+                              ],
+
+                            ),
 
                             const SizedBox(height: 6),
 
@@ -1666,7 +1700,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     ),
 
-                    const SizedBox(height: 8), // ลดระยะห่างตรงนี้ให้ชิดขึ้น
+                    const SizedBox(height: 8),
 
                     Row(
 
@@ -1684,7 +1718,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     ),
 
-                    const SizedBox(height: 2), // ลดระยะห่างตรงนี้ให้ชิดขึ้น
+                    const SizedBox(height: 2),
 
                     Row(
 
@@ -1752,7 +1786,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     ),
 
-                    const SizedBox(height: 8), // ลดระยะห่างก่อนถึงส่วนสูง/สถานที่
+                    const SizedBox(height: 8),
 
                     Text('ส่วนสูง: $myHeight ซม. | น้ำหนัก: $myWeight กก.\nสถานที่: $myLocation', textAlign: TextAlign.center, style: TextStyle(fontSize: 13, color: Colors.grey.shade600)),
 
