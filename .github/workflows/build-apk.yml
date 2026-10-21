@@ -24,6 +24,10 @@ jobs:
           mkdir -p lib
           if [ -f "Main.dart" ]; then cp Main.dart lib/main.dart; fi
           if [ -f "main.dart" ]; then cp main.dart lib/main.dart; fi
+          # แก้ชื่อใน pubspec.yaml ให้เป็นตัวพิมพ์เล็กเพื่อป้องกัน Error
+          if [ -f "pubspec.yaml" ]; then
+            sed -i 's/^name:.*/name: mader_app/' pubspec.yaml
+          fi
           flutter create . --platforms=android
 
       - run: flutter pub get
