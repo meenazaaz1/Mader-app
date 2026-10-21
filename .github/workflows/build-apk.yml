@@ -21,14 +21,14 @@ jobs:
 
       - name: Prepare Project
         run: |
+          # ลบ pubspec.yaml เก่าทิ้ง แล้วให้ flutter สร้างโปรเจกต์ใหม่ที่ถูกต้องให้ทั้งหมดอัตโนมัติ
+          rm -f pubspec.yaml
+          flutter create . --org com.example --project-name mader_app --platforms=android
+          
+          # ย้ายไฟล์โค้ด main.dart ไปไว้ในโฟลเดอร์ lib ที่สร้างขึ้น
           mkdir -p lib
-          if [ -f "Main.dart" ]; then cp Main.dart lib/main.dart; fi
-          if [ -f "main.dart" ]; then cp main.dart lib/main.dart; fi
-          # แก้ชื่อใน pubspec.yaml ให้เป็นตัวพิมพ์เล็กเพื่อป้องกัน Error
-          if [ -f "pubspec.yaml" ]; then
-            sed -i 's/^name:.*/name: mader_app/' pubspec.yaml
-          fi
-          flutter create . --platforms=android
+          if [ -f "Main.dart" ]; then mv Main.dart lib/main.dart; fi
+          if [ -f "main.dart" ]; then mv main.dart lib/main.dart; fi
 
       - run: flutter pub get
       - run: flutter build apk --release
